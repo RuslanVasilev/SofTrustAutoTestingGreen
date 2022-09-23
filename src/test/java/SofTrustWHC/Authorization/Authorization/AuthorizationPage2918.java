@@ -1,16 +1,13 @@
-package SofTrustWHC.Authorization;
-
-import Core.BaseSelenium;
+package SofTrustWHC.Authorization.Authorization;
 
 import Core.BaseSeleniumPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import javax.swing.*;
 
-
-public class AuthorizationPage extends BaseSeleniumPage {
+public class AuthorizationPage2918 extends BaseSeleniumPage {
     @FindBy(xpath = "//input[@id='Login']")
     private WebElement login;
     @FindBy(xpath = "//*[@id='Password']")
@@ -21,7 +18,11 @@ public class AuthorizationPage extends BaseSeleniumPage {
     @FindBy(xpath = "//input[@id='loginBtn']")
     private WebElement enterBtn;
 
-    public AuthorizationPage() {
+    @FindBy (how = How.XPATH, using = "//div[contains(@class,'ui-dialog')]//button")
+    private WebElement divCovidInformation;
+
+
+    public AuthorizationPage2918() {
 
 
         driver.get("http://192.168.7.54/test");
@@ -29,7 +30,7 @@ public class AuthorizationPage extends BaseSeleniumPage {
         PageFactory.initElements(driver, this);
     }
 
-    public AuthorizationPage wrightInFields(String loginValue, String passwordValue) {
+    public AuthorizationPage2918 wrightInFields(String loginValue, String passwordValue) {
 
         login.sendKeys(loginValue);
 
@@ -38,6 +39,11 @@ public class AuthorizationPage extends BaseSeleniumPage {
         remember.click();
 
         enterBtn.click();
+
+        divCovidInformation.click();
+
+
+
 
 
 
