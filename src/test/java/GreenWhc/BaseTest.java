@@ -1,3 +1,5 @@
+package GreenWhc;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,7 +11,6 @@ abstract public class BaseTest {
 
 
     public void setUp() {
-        System.out.println("Открываю браузер");
         WebDriverManager.chromedriver().setup();
         Configuration.browser = "chrome";
         Configuration.driverManagerEnabled = true;

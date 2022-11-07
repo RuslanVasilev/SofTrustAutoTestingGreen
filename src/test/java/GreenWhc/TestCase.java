@@ -1,3 +1,5 @@
+package GreenWhc;
+
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,10 +19,7 @@ public class TestCase extends BaseTest {
      */
     private final static String PASSWORD_VALUE = "11";
 
-// Скриншоты после каждого теста
-//    @RegisterExtension
-//    static ScreenShooterExtension screenshotEmAll = new ScreenShooterExtension(true)
-//            .to("target/screenshots");
+
 
     @BeforeEach
 /**
@@ -38,23 +37,27 @@ public class TestCase extends BaseTest {
 
     @Test
     /**
-     * Запись пациента с типом записи "Предварительно" через личный кабинет. TEST-2177
+     * Запись пациента с типом записи "Предварительно" через личный кабинет и проведение записи. TEST-2177
      */
     public void preRegistration() {
         DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.PersonalСabinetEnter();
         PatientRecord personalСabinet = new PatientRecord();
         personalСabinet.recordPatientPreliminaryType();
+        SessionPatient sessionPatient = new SessionPatient();
+        sessionPatient.SessionPatient();
     }
     @Test
     /**
-     * Запись пациента с типом записи "Первичный" через личный кабинет. TEST-2178
+     * Запись пациента с типом записи "Первичный" через личный кабинет и проставление невки. TEST-2178
      */
     public void primaryRecord() {
         DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.PersonalСabinetEnter();
         PatientRecord personalСabinet = new PatientRecord();
         personalСabinet.primaryPatientTypeRecord();
+        SessionPatient sessionPatient = new SessionPatient();
+        sessionPatient.NonappearancePatient();
     }
 
     @Test
@@ -68,6 +71,10 @@ public class TestCase extends BaseTest {
         personalСabinet.repeatedPatientTypeRecord();
 
     }
+
+    /**
+     * Запись по направлению в личном кабинете
+     */
     @Test
     public void  directionRecord() {
         DashboardPage dashboardPage = new DashboardPage();
@@ -75,6 +82,10 @@ public class TestCase extends BaseTest {
         PatientRecord personalСabinet = new PatientRecord();
         personalСabinet.directionPatientTypeRecord();
     }
+
+    /**
+     * Запись вне расписания в личном кабинете
+     */
     @Test
     public void offScheduleRecord() {
         DashboardPage dashboardPage = new DashboardPage();
@@ -82,19 +93,16 @@ public class TestCase extends BaseTest {
         PatientRecord personalСabinet = new PatientRecord();
         personalСabinet.offSchedulePatientTypeRecord();
     }
+
+    /**
+     * Перенос записи предварительной из вне расписания
+     */
     @Test
-    public void SessionPatient() {
+    public void  TransferringRecord() {
         DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.PersonalСabinetEnter();
         SessionPatient sessionPatient = new SessionPatient();
-        sessionPatient.SessionPatient();
-    }
-    @Test
-    public void NonappearancePatient() {
-        DashboardPage dashboardPage = new DashboardPage();
-        dashboardPage.PersonalСabinetEnter();
-        SessionPatient sessionPatient = new SessionPatient();
-        sessionPatient.NonappearancePatient();
+        sessionPatient.TransferringRecord();
     }
 
 
