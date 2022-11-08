@@ -1,5 +1,4 @@
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideWait;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +17,10 @@ public class TestCase extends BaseTest {
      */
     private final static String PASSWORD_VALUE = "11";
 
+// Скриншоты после каждого теста
+//    @RegisterExtension
+//    static ScreenShooterExtension screenshotEmAll = new ScreenShooterExtension(true)
+//            .to("target/screenshots");
 
     @BeforeEach
 /**
@@ -27,6 +30,8 @@ public class TestCase extends BaseTest {
         Configuration.browserSize = "1920x1080";
         AuthorizationPage authorizationPage = new AuthorizationPage(BASE_URL);
         authorizationPage.AuthorizationEnter(LOGIN_VALUE, PASSWORD_VALUE);
+
+
         System.out.println("авторизация");
 
     }
@@ -38,7 +43,7 @@ public class TestCase extends BaseTest {
     public void preRegistration() {
         DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.PersonalСabinetEnter();
-        PersonalСabinet personalСabinet = new PersonalСabinet();
+        PatientRecord personalСabinet = new PatientRecord();
         personalСabinet.recordPatientPreliminaryType();
     }
     @Test
@@ -48,7 +53,7 @@ public class TestCase extends BaseTest {
     public void primaryRecord() {
         DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.PersonalСabinetEnter();
-        PersonalСabinet personalСabinet = new PersonalСabinet();
+        PatientRecord personalСabinet = new PatientRecord();
         personalСabinet.primaryPatientTypeRecord();
     }
 
@@ -59,7 +64,7 @@ public class TestCase extends BaseTest {
     public void repeatedRecord() {
         DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.PersonalСabinetEnter();
-        PersonalСabinet personalСabinet = new PersonalСabinet();
+        PatientRecord personalСabinet = new PatientRecord();
         personalСabinet.repeatedPatientTypeRecord();
 
     }
@@ -67,8 +72,29 @@ public class TestCase extends BaseTest {
     public void  directionRecord() {
         DashboardPage dashboardPage = new DashboardPage();
         dashboardPage.PersonalСabinetEnter();
-        PersonalСabinet personalСabinet = new PersonalСabinet();
+        PatientRecord personalСabinet = new PatientRecord();
         personalСabinet.directionPatientTypeRecord();
+    }
+    @Test
+    public void offScheduleRecord() {
+        DashboardPage dashboardPage = new DashboardPage();
+        dashboardPage.PersonalСabinetEnter();
+        PatientRecord personalСabinet = new PatientRecord();
+        personalСabinet.offSchedulePatientTypeRecord();
+    }
+    @Test
+    public void SessionPatient() {
+        DashboardPage dashboardPage = new DashboardPage();
+        dashboardPage.PersonalСabinetEnter();
+        SessionPatient sessionPatient = new SessionPatient();
+        sessionPatient.SessionPatient();
+    }
+    @Test
+    public void NonappearancePatient() {
+        DashboardPage dashboardPage = new DashboardPage();
+        dashboardPage.PersonalСabinetEnter();
+        SessionPatient sessionPatient = new SessionPatient();
+        sessionPatient.NonappearancePatient();
     }
 
 
